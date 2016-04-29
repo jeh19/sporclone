@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+
+<!--
+
+In this file, comments are used to identify different parts of the code by letter.
+The Sporclone Instructions file will refer to letters when describing the sequence of
+steps necessary to create a working Sporclone game. Complete the project according
+to the order of the NUMBERED instructions, not the order of the letters.
+
+DO NOT DELETE THE LETTER COMMENTS AFTER YOU COMPLETE STEPS!!!!!
+
+-->
+
+<html>
+<head>
+<!-- a. -->
+<title>Sporclone: Marvel Superhero Quiz</title>
+
+<!-- b. -->
+<link rel="stylesheet" href="css/main.css">
+
+<!-- You may optionally style the table in your answers section here. -->
+<style>
+table {
+
+}
+
+tr {
+
+}
+
+th {
+
+}
+
+td {
+        text-align: center;
+}
+
+table span {
+    /* applies only to span tags within table */
+    border: 1px solid #AAAAAA;
+    display: inline-block;
+    height: 20px;
+    width: 150px;
+}
+</style>
+
+<script>
+/*********** Game configuration ***********/
+
+// c.
+var answers = ["Ant Man", "Archangel", "Beast", "Black Bolt", "Black Cat", "Black Panther", "Black Widow", "Captain America", "Captain Britain", "Captain Marvel", "Cyclops", "Deadpool", "Doctor Strange", "Emma Frost", "Falcon", "Fantastic Four", "Hawkeye", "Hulk", "Iron Man", "Magneto", "Moon Knight", "Professor X", "Quicksilver", "Scarlet Witch", "Spiderman", "Starlord", "Thor",  "Vision", "Winter Soldier", "Wolverine"];
+
+// d.
+var time_limit = 180; // in seconds
+
+</script>
+
+</head>
+
+
+<!-- e. -->
+<body onload="setup()" >
+
+<header>
+    <h1>Sporclone</h1>
+</header>
+
+<div class="frame">
+
+    <section>
+
+        <aside>
+            <h3>More Games</h3>
+            <ul>
+            <!-- f. -->
+            <li><a href="superhero.html">DC Superhero Quiz</a></li>
+            <li><a href="ncis.html">NCIS Quiz</a></li>
+            </ul>
+        </aside>
+
+        <!-- g. -->
+        <img class="icon" src="img3/marvel_logo.jpg" alt="quiz logo">
+
+        <!-- h. -->
+        <h2>Name the Marvel Superhero that the logo belongs to.</h2>
+
+    </section>
+
+    <section>
+
+        <div class="column">
+            <!-- i. -->
+            <input id="start" type="button" onclick="start()" value="PLAY GAME">
+        </div>
+
+        <div class="column">
+            <!-- j. -->
+            <h3>Enter Superhero Name:</h3>
+
+            <!-- k.  -->
+            <input id="guess" onkeyup="check()" type="text">
+        </div>
+
+        <div class="column">
+            <h3>Score</h3>
+            <span id="score"></span>
+        </div>
+
+        <div class="column">
+            <h3>Time</h3>
+            <span id="time"></span>
+        </div>
+
+    </section>
+
+    <section>
+
+        <!-- l. -->
+        <table>
+        <tr>
+        <td><img src="img3/antman_logo.jpg" alt="logo"><br><span id="answer0"></span></td>
+        <td><img src="img3/archangel_logo.png" alt="logo"><br><span id="answer1"></span></td>
+        <td><img src="img3/beast_logo.jpg" alt="logo"><br><span id="answer2"></span></td>
+        <td><img src="img3/blackbolt_logo.jpg" alt="logo"><br><span id="answer3"></span></td>
+        <td><img src="img3/blackcat_logo.png" alt="logo"><br><span id="answer4"></span></td>
+        
+        </tr>
+        <tr>
+        <td><img src="img3/blackpanther_logo.jpg" alt="logo"><br><span id="answer5"></span></td>       
+        <td><img src="img3/blackwidow_logo.png" alt="logo"><br><span id="answer6"></span></td>
+        <td><img src="img3/captainamerica_logo.jpg" alt="logo"><br><span id="answer7"></span></td>
+        <td><img src="img3/captainbritain_logo.jpg" alt="logo"><br><span id="answer8"></span></td>
+        <td><img src="img3/captainmarvel_logo.jpg" alt="logo"><br><span id="answer9"></span></td>
+        </tr>
+        <tr>
+        <td><img src="img3/cyclops_logo.jpg" alt="logo"><br><span id="answer10"></span></td>
+        <td><img src="img3/deadpool_logo.jpg" alt="logo"><br><span id="answer11"></span></td>
+        <td><img src="img3/doctorstrange_logo.png" alt="logo"><br><span id="answer12"></span></td>
+        <td><img src="img3/emmafrost_logo.png" alt="logo"><br><span id="answer13"></span></td>      
+        <td><img src="img3/falcon_logo.jpg" alt="logo"><br><span id="answer14"></span></td>
+        </tr>
+        <tr>
+        <td><img src="img3/fantasticfour_logo.jpg" alt="logo"><br><span id="answer15"></span></td>
+        <td><img src="img3/hawkeye_logo.jpg" alt="logo"><br><span id="answer16"></span></td>
+        <td><img src="img3/hulk_logo.jpg" alt="logo"><br><span id="answer17"></span></td>
+        <td><img src="img3/ironman_logo.jpg" alt="logo"><br><span id="answer18"></span></td>
+        <td><img src="img3/magneto_logo.jpg" alt="logo"><br><span id="answer19"></span></td>
+        </tr>
+        <tr>
+        <td><img src="img3/moonknight_logo.png" alt="logo"><br><span id="answer20"></span></td>
+        <td><img src="img3/professorx_logo.png" alt="logo"><br><span id="answer21"></span></td>
+        <td><img src="img3/quicksilver_logo.jpg" alt="logo"><br><span id="answer22"></span></td>
+        <td><img src="img3/scarletwitch_logo.png" alt="logo"><br><span id="answer23"></span></td>
+        <td><img src="img3/spiderman_logo.jpg" alt="logo"><br><span id="answer24"></span></td>
+        </tr>
+        <tr>
+        <td><img src="img3/starlord_logo.jpg" alt="logo"><br><span id="answer25"></span></td>
+        <td><img src="img3/thor_logo.jpg" alt="logo"><br><span id="answer26"></span></td>
+        <td><img src="img3/vision_logo.jpg" alt="logo"><br><span id="answer27"></span></td>
+        <td><img src="img3/wintersoldier_logo.jpg" alt="logo"><br><span id="answer28"></span></td>
+        <td><img src="img3/wolverine_logo.jpg" alt="logo"><br><span id="answer29"></span></td>
+        </tr>
+        </table>
+
+    </section>
+
+    <footer>
+
+        <!-- m. -->
+        <p>Quiz by Jordan H</p>
+
+    </footer>
+
+</div>
+
+<!-- n. -->
+<script src="js/sporclone.js"></script>
+
+</body>
+</html>
